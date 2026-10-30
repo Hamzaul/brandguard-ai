@@ -31,3 +31,10 @@ Open http://localhost:5173 and click **Review content**. The app has five pages:
 ## Structure
 
 See the file map in `PROGRESS_TRACKER.md`.
+
+## Login, roles and approvals (Round 3)
+
+- Sign up / sign in from the first screen. The first account becomes **Manager**; later sign-ups are **Creators**. Managers can promote people to **Reviewer** or **Manager** in *Team Insights*.
+- Creators: review content, submit it for approval, track status, edit and resubmit when changes are requested.
+- Reviewers and managers: approve or request changes (comment required); cannot decide on their own submissions. Both see Team Insights (compliance score, approval rate); managers also manage roles and see the activity log.
+- Backend env vars: see `backend/.env.example` (`JWT_SECRET` is required in production; use Upstash Redis for storage on Vercel).

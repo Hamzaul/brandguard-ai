@@ -179,3 +179,44 @@ button:disabled { cursor: not-allowed; }
   .draft-actions, .form-actions, .data-row, .history-item { flex-direction: column; align-items: stretch; }
   .button-row { flex-wrap: wrap; }
 }
+
+/* ---------- login / signup ---------- */
+.boot-message { margin: 0; padding: 40px; color: var(--text-soft); font-size: 14px; }
+.auth-shell { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: var(--bg); }
+.auth-card { width: 100%; max-width: 440px; padding: 36px; }
+.auth-brand { padding-left: 0; margin-bottom: 26px; }
+.auth-card h1 { margin: 0 0 6px; font-size: 28px; line-height: 34px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
+.auth-submit { width: 100%; margin-top: 24px; }
+.auth-error { margin-top: 18px; }
+.auth-switch { margin: 22px 0 0; font-size: 13px; color: var(--text-card-sub); text-align: center; }
+.link-button { background: none; border: 0; padding: 0; color: var(--link); font-size: 13px; font-weight: 700; text-decoration: underline; }
+.avatar-button { cursor: pointer; }
+.avatar-button:hover { border-color: #5b86c8; }
+.menu-signout { height: 36px; width: 100%; margin-top: 4px; }
+.btn-tall { height: 42px; border-radius: 10px; font-size: 14px; }
+
+/* ---------- approvals, score, team ---------- */
+.status-badge { display: inline-flex; align-items: center; height: 24px; padding: 0 11px; border-radius: 999px; border: 1px solid; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.status-pending { background: #514329; border-color: #886d3a; color: #ffda89; }
+.status-approved { background: #1f4234; border-color: #3e7a5e; color: #a6ecc8; }
+.status-changes { background: #522d36; border-color: #89515a; color: #ffb1ab; }
+.score-badge { display: inline-flex; align-items: baseline; gap: 2px; padding: 3px 10px; border-radius: 8px; border: 1px solid; font-size: 14px; font-weight: 700; white-space: nowrap; }
+.score-badge small { font-size: 10px; opacity: 0.8; }
+.score-badge em { margin-left: 8px; font-style: normal; font-size: 12px; font-weight: 600; }
+.score-great, .score-good { background: #1f4234; border-color: #3e7a5e; color: #a6ecc8; }
+.score-warn { background: #514329; border-color: #886d3a; color: #ffda89; }
+.score-bad { background: #522d36; border-color: #89515a; color: #ffb1ab; }
+.score-row { display: flex; align-items: center; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+.filter-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.filter { height: 30px; padding: 0 14px; border-radius: 999px; background: transparent; border: 1px solid #334861; color: #a5b4c9; font-size: 12px; font-weight: 700; }
+.filter.active { background: #19345c; border-color: #2e558b; color: var(--text); }
+.sub-item { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; width: 100%; padding: 14px; margin-top: 10px; text-align: left; border-radius: 12px; border: 1px solid var(--inner-line); background: var(--inner); color: var(--text); }
+.sub-item:hover, .sub-item.selected { border-color: #4389ff; }
+.sub-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; font-size: 14px; }
+.sub-top strong { overflow-wrap: anywhere; }
+.sub-heading { margin: 24px 0 12px; font-size: 15px; font-weight: 700; color: var(--text); }
+.decision-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; font-size: 13px; color: var(--text-body); }
+.decision-list p { margin: 6px 0 0; }
+.spaced-top { margin-top: 16px; }
+.role-select { width: auto; padding: 8px 10px; font-size: 13px; }
+@media (max-width: 860px) { .auth-card { padding: 24px; } }

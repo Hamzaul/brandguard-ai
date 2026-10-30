@@ -11,8 +11,10 @@ function Menu({ title, children }) {
   );
 }
 
-export default function Topbar({ pageLabel, brandName, initials }) {
-  const [open, setOpen] = useState(null); // "help" | "bell" | null
+const ROLE_LABELS = { creator: "Creator", reviewer: "Reviewer", manager: "Manager" };
+
+export default function Topbar({ pageLabel, brandName, initials, user, onLogout }) {
+  const [open, setOpen] = useState(null); // "help" | "bell" | "account" | null
   const toggle = (name) => setOpen((current) => (current === name ? null : name));
 
   return (
@@ -40,7 +42,16 @@ export default function Topbar({ pageLabel, brandName, initials }) {
           <button type="button" className="icon-button" aria-label="Notifications" onClick={() => toggle("bell")}><BellIcon size={20} /></button>
           {open === "bell" && <Menu title="Notifications"><p className="menu-note">You are all caught up.</p></Menu>}
         </div>
-        <span className="avatar" aria-label="Your account">{initials}</span>
+        <div className="menu-wrap">
+          <button type="button" className="avatar avatar-button" aria-label="Your account" onClick={() => toggle("account")}>{initials}</button>
+          {open === "account" && user && (
+            <Menu title={user.name}>
+              <p className="menu-note">{user.email}</p>
+              <p><span className="chip">{ROLE_LABELS[user.role] || user.role}</span></p>
+              <button type="button" className="btn-outline menu-signout" onClick={onLogout}>Sign out</button>
+            </Menu>
+          )}
+        </div>
       </div>
     </header>
   );

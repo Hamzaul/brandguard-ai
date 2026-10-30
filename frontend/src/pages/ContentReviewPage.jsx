@@ -6,7 +6,7 @@ import { MAX_TEXT_LENGTH } from "../utils/sampleData.js";
 
 const countWords = (text) => (text.trim() ? text.trim().split(/\s+/).length : 0);
 
-export default function ContentReviewPage({ brandName, text, onTextChange, review, loading, error, onRun }) {
+export default function ContentReviewPage({ brandName, text, onTextChange, review, loading, error, onRun, onSubmitForApproval, submitting, notice }) {
   const [copied, setCopied] = useState(false);
   const words = countWords(text);
   const tooLong = text.length > MAX_TEXT_LENGTH;
@@ -24,6 +24,7 @@ export default function ContentReviewPage({ brandName, text, onTextChange, revie
   }
 
   let statusMessage = "Checking voice, claims & terminology";
+  if (notice) statusMessage = notice;
   if (error) statusMessage = error;
   else if (tooLong) statusMessage = `Over the ${MAX_TEXT_LENGTH}-character limit. Please shorten the draft.`;
   const statusIsError = Boolean(error) || tooLong;
@@ -57,9 +58,16 @@ export default function ContentReviewPage({ brandName, text, onTextChange, revie
               {!statusIsError && <ShieldCheckIcon size={16} />}
               <span>{statusMessage}</span>
             </p>
-            <button type="button" className="btn-primary" onClick={onRun} disabled={loading || empty || tooLong}>
-              {loading ? "Reviewing..." : "Review content"}
-            </button>
+            <div className="button-row">
+              {onSubmitForApproval && (
+                <button type="button" className="btn-outline btn-tall" onClick={onSubmitForApproval} disabled={loading || submitting || empty || tooLong}>
+                  {submitting ? "Submitting..." : "Submit for approval"}
+                </button>
+              )}
+              <button type="button" className="btn-primary" onClick={onRun} disabled={loading || empty || tooLong}>
+                {loading ? "Reviewing..." : "Review content"}
+              </button>
+            </div>
           </div>
         </section>
 
